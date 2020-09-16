@@ -2,20 +2,21 @@ package main
 
 import (
 	"encoding/json"
-	"github.com/gorilla/mux"
 	"fmt"
 	"io"
-	"os"
 	"net/http"
+	"os"
+
 	"github.com/badoux/goscraper"
 	"github.com/gorilla/handlers"
+	"github.com/gorilla/mux"
 )
 
 type Preview struct {
-    Url   	  string   `json:"url"`
-    Title         string   `json:"title"`
-    Description   string   `json:"description"`
-    Images      []string   `json:"images"`
+	Url         string   `json:"url"`
+	Title       string   `json:"title"`
+	Description string   `json:"description"`
+	Images      []string `json:"images"`
 }
 
 func getUrlData(w http.ResponseWriter, r *http.Request) {
@@ -64,6 +65,7 @@ func GetOrigins() string {
 	}
 	return origin
 }
+
 func GetPort() string {
 	var port = os.Getenv("PORT")
 	if port == "" {
